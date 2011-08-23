@@ -1,18 +1,4 @@
 package id3;
-/*****************************************************************
-This program was written by Dr. Benny Raphael.
-The purpose of this program is only to demonstrate some concepts
-discussed in the book "Fundamentals of Computer Aided Engineering" by
-Benny Raphael and Ian F. C. Smith, John Wiley, UK, 2003.
-(http://www.wiley.com/WileyCDA/WileyTitle/productCd-0471487155.html)
-The author (Benny Raphael) grants everyone permission to copy and
-use this code freely provided that a) this copyright notice is not
-modified b)  Any change to this code is clearly indicated c) the
-user takes complete responsibility for the use, misuse or non-use of
-this code.  No care has been made to ensure that the implementation
-is efficient, or entirely accurate with respect to the concept that is
-demonstrated.
-*******************************************************************/
 
 
 
@@ -20,13 +6,7 @@ import java.io.*;
 import java.util.*;
 import org.jdom.*;
 
-/**
-  * A simple implementation of the id3 algorithm
-  * This is a modified version to make my code closer to the standard id3 algorithm
-  * @version        Dec. 13 2004
-  * @author         Dr. Benny Raphael
 
-*/
 public class id3 {
 
 
@@ -422,6 +402,15 @@ public class id3 {
         Scanner in = new Scanner(System.in);
 
         System.out.print("Ruta del archivo: ");
+        /*
+         cuando pida la ruta se le especifica cualquiera de las 3 que estan en el paquete id3
+         * ejemplo C:\Documents and Settings\Usuario\Escritorio\id3nuevo\id3\src\id3\ruta1.txt
+         * luego cuando pide el atributo clase le colocas el numero de la columna a que el corresponde el
+         * atributo que quieres que sea atributo clase -1
+         * osea la primera columna es la cero, la 2da es el 1 y asi...
+         */
+
+
         String str = in.nextLine();
 
         System.out.print("atrib Clase: ");

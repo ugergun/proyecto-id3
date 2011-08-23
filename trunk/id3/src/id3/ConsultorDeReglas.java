@@ -13,10 +13,6 @@ import javax.swing.tree.TreeModel;
 import org.jdom.*;
 import org.jdom.input.*;
 
-/**
- *
- * @author Estudiante
- */
 
 public class ConsultorDeReglas {
 
