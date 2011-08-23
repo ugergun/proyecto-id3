@@ -18,7 +18,7 @@ demonstrated.
 
 import java.io.*;
 import java.util.*;
-
+import org.jdom.*;
 
 /**
   * A simple implementation of the id3 algorithm
@@ -363,12 +363,54 @@ public class id3 {
 
 	}
 
-	/*  This function creates the decision tree and prints it in the form of rules on the console
-	*/
+	private void crearArchivo(TreeNode nodo, Element arbol) {
+
+        if ( nodo.children == null ) {
+            int[] valores = getAllValues(nodo.data, atributoClase);
+            Element list = new Element("lista-de-resultados");
+
+            for (int i = 0; i < valores.length; i++) {
+                Element result = new Element("resultado");
+                result.addContent( domains[atributoClase].elementAt( valores[0] ).toString() );
+                list.addContent(result);
+            }
+
+            arbol.addContent(list);
+
+            return;
+        }
+
+        int num = nodo.children.length;
+
+        for (int i = 0; i < num; i++) {
+
+            Element condicion = new Element("condicion");
+
+            Element atrib = new Element( "atributo" );
+            atrib.addContent(attributeNames[nodo.decompositionAttribute] );
+
+            Element valor = new Element( "valor" );
+            valor.addContent( domains[nodo.decompositionAttribute].elementAt(i).toString() );
+
+            condicion.addContent(atrib);
+            condicion.addContent(valor);
+
+            arbol.addContent( condicion );
+
+            crearArchivo(nodo.children[i], condicion );
+        }
+    }
 	public void createDecisionTree() {
 		decomposeNode(root);
 		printTree(root, "");
-	}
+                
+                GuardadorDeReglas gdr = new GuardadorDeReglas();
+                Element arbol = new Element( "arbol-de-decision" );
+                crearArchivo( root, arbol );
+                gdr.guardarAtributos(attributeNames, domains, arbol, atributoClase);
+
+
+        }
 
 
   	/* Here is the definition of the main function */
@@ -391,6 +433,13 @@ public class id3 {
         }
 
 		me.createDecisionTree();
+
+
+                java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NewJFrame().setVisible(true);
+            }
+        });
    	}
    	
 
