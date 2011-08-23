@@ -5,10 +5,7 @@
 
 package id3;
 
-/**
- *
- * @author Luis Miguel
- */
+
 public class Condicion {
 
     private String atributo;

@@ -10,10 +10,7 @@ import java.util.*;
 import org.jdom.*;
 import org.jdom.output.*;
 
-/**
- *
- * @author Estudiante
- */
+
 public class GuardadorDeReglas 
         implements Runnable {
 
